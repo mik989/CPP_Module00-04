@@ -111,20 +111,32 @@ void Phonebook::addContact(void)
     this->_index++;
 }
 
-void Phonebook::searchContact(void)
+void Phonebook::selectContact(void)
 {
     int j = 0;
+
+    std::cin >> j;
+    if (j > 0 && j <= 9 && _contacts[j - 1].n == j)
+    {
+        _contacts[j - 1].getContact();
+        j = 0;
+    }
+    else
+    {
+        j = 0;
+        std::cout << "ID non valido. Ritenta...: ";
+        selectContact();
+    }
+}
+
+void Phonebook::searchContact(void)
+{
     for(int i = 0; i < 8; i++)
     {
         if (_contacts[i].n == i + 1)
             _contacts[i].preview();
     }
     std::cout << "Digita l'ID del contatto che vuoi visualizzare: ";
-    std::cin >> j;
-    if (j > 0 && j < 9 && _contacts[j - 1].n == j)
-            _contacts[j - 1].getContact();
-    else
-        std::cout << "ID non valido." << std::endl;
 }
 
 void Phonebook::exitPhonebook(void)
@@ -135,17 +147,30 @@ void Phonebook::exitPhonebook(void)
 
 void Phonebook::selectCommand (void)
 {
+    std::string command;
+    int    flag;
+    flag = 0;
     while(1)
     {
-        std::string command;
         std::cout << "Digita ADD per aggiungere un contatto, SEARCH per cercarlo o EXIT per uscire: ";
         std::cin >> command;
         if (command == "ADD")
-            this->addContact();
+        {
+            addContact();
+            flag = 1;
+        }
         else if (command == "SEARCH")
-            this->searchContact();
+        {
+            if (flag == 1)
+            {
+                searchContact();
+                selectContact();
+            }
+            else
+                std::cout << "La Rubrica è vuota! Aggiungi il primo contatto..." << std::endl;
+        }
         else if (command == "EXIT")
-            this->exitPhonebook();
+            exitPhonebook();
         else
             std::cout << "Comando non Valido: " << std::endl;
     }

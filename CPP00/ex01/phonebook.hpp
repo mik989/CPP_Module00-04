@@ -32,6 +32,7 @@ class Phonebook
         void selectCommand (void);
         void addContact (void);
         void searchContact (void);
+        void selectContact(void);
         void exitPhonebook (void);
     private:
         int _index;
