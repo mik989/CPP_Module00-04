@@ -1,7 +1,5 @@
 #include "phonebook.hpp"
 
-// Contact
-
 Contact::Contact (void)
 {
     this->n = 0;
@@ -113,19 +111,39 @@ void Phonebook::addContact(void)
 
 void Phonebook::selectContact(void)
 {
-    int j = 0;
+    int j; 
+    j = 0;
+    std::string str;
+    while(1)
+    {
+        std::cin >> str;
+        try
+        {
+            std::stoi(str);
+        }
+        catch(const std::out_of_range& e)
+        {
+            std::cout << "ID non valido. Ritenta...: ";
+            continue;
+        }
+        catch(const std::invalid_argument& e)
+        {
+            std::cout << "ID non valido. Ritenta...: ";
+            continue;
+        }
 
-    std::cin >> j;
-    if (j > 0 && j <= 9 && _contacts[j - 1].n == j)
-    {
-        _contacts[j - 1].getContact();
-        j = 0;
-    }
-    else
-    {
-        j = 0;
-        std::cout << "ID non valido. Ritenta...: ";
-        selectContact();
+        j = std::stoi(str);
+        if (j > 0 && j <= 9 && _contacts[j - 1].n == j)
+        {
+            _contacts[j - 1].getContact();
+            j = 0;
+            return ;
+        }
+        else
+        {
+            j = 0;
+            std::cout << "ID non valido. Ritenta...: ";
+        }
     }
 }
 
