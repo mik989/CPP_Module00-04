@@ -19,24 +19,29 @@ void Harl::complain(std::string level)
     switch (level[0])
     {
     case 'D':
+        std::cout << "[ DEBUG ]" << std::endl;
         (this->*f[0])();
         (this->*f[1])();
         (this->*f[2])();
         (this->*f[3])();
         break;
     case 'I':
+        std::cout << "[ INFO ]" << std::endl;
         (this->*f[1])();
         (this->*f[2])();
         (this->*f[3])();
         break;
     case 'W':
+        std::cout << "[ WARNING ]" << std::endl;
         (this->*f[2])();
         (this->*f[3])();
         break;
     case 'E':
+        std::cout << "[ ERROR ]" << std::endl;
         (this->*f[3])();
         break;    
     default:
+        std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
         break;
     }
    
