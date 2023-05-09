@@ -4,12 +4,14 @@
 Dog::Dog() 
 {
     this->type = "Dog";
+    Brain *_brain = new Brain;
     std::cout << "Dog constructor called" << std::endl;
 }
 
 Dog::~Dog() 
 {
     std::cout << "Dog destructor called" << std::endl;
+    delete [] _brain;
    // delete this;
 }
 

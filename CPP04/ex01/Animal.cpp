@@ -9,7 +9,6 @@ Animal::Animal()
 Animal::~Animal() 
 {
     std::cout << "Animal destructor called" << std::endl;
-   // delete this;
 }
 
 std::string Animal::getType() const 
@@ -31,7 +30,6 @@ WrongAnimal::WrongAnimal()
 WrongAnimal::~WrongAnimal() 
 {
     std::cout << "WrongAnimal destructor called" << std::endl;
-   // delete this;
 }
 
 std::string WrongAnimal::getType() const 

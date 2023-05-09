@@ -2,6 +2,7 @@
 #define DOG_HPP
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Dog : public Animal
 {
@@ -9,6 +10,8 @@ class Dog : public Animal
         Dog();
         virtual ~Dog();
         virtual void makeSound() const;
+    private:
+        Brain * _brain;
 };
 
 class WrongDog : public WrongAnimal

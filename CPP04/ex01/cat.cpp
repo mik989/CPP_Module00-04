@@ -4,12 +4,14 @@
 Cat::Cat()
 {
     this->type = "Cat";
+    Brain *_brain = new Brain;
     std::cout << "Cat constructor called" << std::endl;
 }
 
 Cat::~Cat() 
 {
     std::cout << "Cat destructor called" << std::endl;
+    delete [] _brain;
    // delete this;
 }
 
