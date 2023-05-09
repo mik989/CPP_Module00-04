@@ -9,13 +9,12 @@
 class AAnimal
 {
     public:
-
         AAnimal();
         AAnimal(const AAnimal & ani);
         virtual ~AAnimal();
         std::string getType() const;
         const AAnimal & operator=(AAnimal const &anim);
-        virtual void makeSound() const;
+        virtual void makeSound() const = 0;
 
     protected:
         std::string type;
