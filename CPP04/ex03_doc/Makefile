@@ -1,7 +1,7 @@
 NAME = interface
-CC = c++
+CC = c++ -g
 CFLAGS = -Wall -Wextra -Werror -Wshadow -Wno-shadow -std=c++98
-SRCS = main.cpp Amateria.cpp ICharacter.cpp IMateriaSource.cpp
+SRCS = main.cpp AMateria.cpp Concrete.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)

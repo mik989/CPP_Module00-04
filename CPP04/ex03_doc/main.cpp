@@ -1,4 +1,7 @@
-#include "Amateria.hpp"
+#include "AMateria.hpp"
+#include "ICharacter.hpp"
+#include "Concrete.hpp"
+#include <string>
 
 int main()
 {
