@@ -4,20 +4,27 @@
 Dog::Dog() 
 {
     this->type = "Dog";
-    Brain *_brain = new Brain;
+    _brain = new Brain;
     std::cout << "Dog constructor called" << std::endl;
 }
 
 Dog::~Dog() 
 {
     std::cout << "Dog destructor called" << std::endl;
-    delete [] _brain;
+    delete _brain;
    // delete this;
 }
 
 void Dog::makeSound() const 
 {
     std::cout << "Bau!" << std::endl;
+}
+
+Dog& Dog::operator=(const Dog &dog)
+{
+    std::cout << "Copy assignment operator called" << std::endl;
+    this->type = dog.getType();
+    return *this;
 }
 
 WrongDog::WrongDog() 

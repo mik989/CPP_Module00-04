@@ -4,10 +4,20 @@
 
 int main()
 {
-const Animal* j = new Dog();
-const Animal* i = new Cat();
-delete j;//should not create a leak
-delete i;
+    
+const Animal* j[10];
+
+for(int i = 0; i < 10; i++)
+{
+    if (i < 5)
+        j[i] = new Cat();
+    if (i >= 5)
+        j[i] = new Dog();    
+}
+for(int i = 0; i < 10; i++)
+{
+    delete j[i];   
+}
 
 return 0;
 }

@@ -10,14 +10,15 @@ class Cat : public Animal
         Cat();
         virtual ~Cat();
         virtual void makeSound() const;
+        Cat &operator=(const Cat &cat);
     private:
-        Brain * _brain;
+        Brain *_brain;
 };
 
 class WrongCat : public WrongAnimal 
 {
     public:
-         WrongCat();
+        WrongCat();
         ~WrongCat();
         void makeSound() const;
 };

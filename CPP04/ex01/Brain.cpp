@@ -6,5 +6,4 @@ Brain::Brain()
 }
 Brain::~Brain()
 {
-	
 }
