@@ -11,7 +11,11 @@ class Dog : public Animal
         Dog(Dog &doggo);
         virtual ~Dog();
         virtual void makeSound() const;
+<<<<<<< HEAD
         const Dog &operator=(const Dog &godcane);
+=======
+        Dog &operator=(const Dog &dog);
+>>>>>>> bd37b4ffc079eb9dfc5068110dd7136536c7bfa0
     private:
         Brain * _brain;
 };

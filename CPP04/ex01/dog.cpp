@@ -18,6 +18,10 @@ Dog::~Dog()
 {
     std::cout << "Dog destructor called" << std::endl;
     delete _brain;
+<<<<<<< HEAD
+=======
+   // delete this;
+>>>>>>> bd37b4ffc079eb9dfc5068110dd7136536c7bfa0
 }
 
 void Dog::makeSound() const 
@@ -29,6 +33,13 @@ const Dog & Dog::operator=(const Dog &godcane)
     this->type = godcane.getType();
     this->_brain = godcane._brain;
     return (*this);
+}
+
+Dog& Dog::operator=(const Dog &dog)
+{
+    std::cout << "Copy assignment operator called" << std::endl;
+    this->type = dog.getType();
+    return *this;
 }
 
 WrongDog::WrongDog() 

@@ -29,7 +29,7 @@ int main()
     std::cout << std::endl;
     Dog &portocopyref = portocopy;
     Cat &pinocopyref = pinocopy;
-    
+
     std::cout << "Type Dogcopyref is :" << portocopyref.getType() << std::endl;
     std::cout << "Type Catcopyref is :" << pinocopyref.getType() << std::endl;
     std::cout << std::endl;
