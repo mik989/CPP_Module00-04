@@ -6,15 +6,15 @@
 #include <iomanip>
 #include "Brain.hpp"
 
-class Animal
+class AAnimal
 {
     public:
 
-        Animal();
-        Animal(const Animal & ani);
-        virtual ~Animal();
+        AAnimal();
+        AAnimal(const AAnimal & ani);
+        virtual ~AAnimal();
         std::string getType() const;
-        const Animal & operator=(Animal const &anim);
+        const AAnimal & operator=(AAnimal const &anim);
         virtual void makeSound() const;
 
     protected:
