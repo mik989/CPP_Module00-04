@@ -5,12 +5,27 @@ ClapTrap::ClapTrap(std::string Name) : _Name(Name)
     std::cout << "ClapTrap Constructor called" << std::endl;
 }
 
+ClapTrap::ClapTrap(const ClapTrap &ref)
+{
+    *this = ref;
+    std::cout << "ClapTrap Copy Constructor called" << std::endl;
+    return;
+}
 
 ClapTrap::~ClapTrap()
 {
     std::cout << "ClapTrap Destructor called" << std::endl;
 }
 
+
+ClapTrap& ClapTrap::operator=(const ClapTrap& ref)
+{
+    this->_Name = ref._Name;
+    this->_HitPoint = ref._HitPoint;
+    this->_enPoint = ref._enPoint;
+    this->_attk = ref._attk;
+    return (*this);
+}
 
 void ClapTrap::attack(const std::string& target)
 {

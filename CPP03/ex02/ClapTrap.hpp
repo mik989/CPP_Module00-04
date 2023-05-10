@@ -9,7 +9,9 @@ class ClapTrap
 {
     public:
         ClapTrap(std::string Name);
+        ClapTrap(const ClapTrap& ref);
         ~ClapTrap();
+        ClapTrap& operator=(const ClapTrap& ref);
         void attack(const std::string& target);
         void takeDamage(unsigned int amount);
         void beRepaired(unsigned int amount);
