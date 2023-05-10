@@ -17,9 +17,8 @@ class Ice : public AMateria
 		Ice(Ice const &ghiaccio);
 		//operator = override
 		Ice &operator=(Ice const& bubbo);
-        //virtual std::string const & getType() const; //Returns the materia type
-        virtual Ice* clone() const;
-        virtual void use(ICharacter& target);
+        Ice* clone() const;
+        void use(ICharacter& target);
 };
 
 class Cure : public AMateria
@@ -31,24 +30,25 @@ class Cure : public AMateria
 		Cure(Cure const &bho);
 		//operator = override
 		Cure &operator=(Cure const& bubbolo);
-       // virtual std::string const & getType() const; //Returns the materia type
-        virtual Cure* clone() const;
-        virtual void use(ICharacter& target);
+        Cure* clone() const;
+        void use(ICharacter& target);
 };
 
 class Character : public ICharacter
 {
 	public:
 		Character(std::string  Name);
+		~Character();
+		// Copy constructor
 		Character(Character &refn);
-		virtual ~Character() {}
+		// Operation overload =
 		Character & operator=(Character const & reff);
 		std::string const & getName() const;
 		void equip(AMateria* m);
 		void unequip(int idx);
 		void use(int idx, ICharacter& target);
 	private:
-		AMateria* _slots;
+		AMateria* _slots[4];
 		int	_nIndex[4];
 		std::string _name;
 };
@@ -63,11 +63,10 @@ class MateriaSource : public IMateriaSource
 		// Operation overload =
 		MateriaSource& operator=(const MateriaSource& copy);
         void learnMateria(AMateria* m);
-        AMateria* createMateria(std::string const & type);
+        virtual AMateria* createMateria(std::string const & type);
 	private:
 		int	_nIndex[4];
 		AMateria* _slots[4];
-		std::string _name;
 };
 
 

@@ -11,7 +11,6 @@ Ice::~Ice()
 		//copy constructor
 Ice::Ice(Ice const &ghiaccio)
 {
-	_type = ghiaccio._type;
 }
 		//operator = override
 Ice & Ice::operator=(Ice const& bubbo)
@@ -21,7 +20,7 @@ Ice & Ice::operator=(Ice const& bubbo)
 }
 void	Ice::use(ICharacter& target)
 {
-	std::cout << "* shoots an ice bolt at *" << target.getName() << std::endl;
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *"<< std::endl;
 }
 
 Ice* Ice::clone() const
@@ -57,38 +56,71 @@ Cure* Cure::clone() const
 }
 void	Cure::use(ICharacter& target)
 {
-	std::cout << "* heals" << target.getName() << "’s wounds *"  << std::endl;
+	std::cout << "* heals " << target.getName() << "'s wounds *"  << std::endl;
 }
 //--------------------------------------------------------------//
-std::string const & Character::getName() const
-{
-	return(_name);
-}
-Character::Character(std::string Name) :_name(Name)
+Character::Character(std::string Name) 
 {
 	for (int i = 0; i < 4; i++)
+	{
 		_nIndex[i] = 0;
+		_slots[i] = NULL;
+	}
+	_name = Name;
+}
+Character::~Character() 
+{
+	for (int i = 0; i < 4; i++)
+	{
+		if (_slots[i])
+		{
+			delete _slots[i];
+			_slots[i] = NULL;
+		}
+	}
 }
 Character::Character(Character &refn)
 {
-	_name = refn._name;
-	for (int i = 0; i < 4; i++)
-		_nIndex[i] = 0;
+	Character::operator=(refn);
 }
 
 Character & Character::operator=(Character const & reff)
 {
+	for (int i = 0; i < 4; i++)
+	{
+		if (_slots[i])
+		{
+			delete _slots[i];
+			_slots[i] = NULL;
+		}
+		_nIndex[i] = reff._nIndex[i];
+		_slots[i] = reff._slots[i]->clone();
+	}
 	_name = reff._name;
 	return (*this);
+}
+
+std::string const & Character::getName() const
+{
+	return(_name);
 }
 
 void	Character::equip(AMateria* m)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		if(_nIndex[i] = 0)
+		if (_slots[3])
 		{
-			_slots[i] = *m;
+			std::cout << "* Inventory is full *" << std::endl;
+			break;
+		}	
+		if(_nIndex[i] == 0)
+		{
+			_nIndex[i] = 1;
+			if (_slots[i])
+				continue;
+			else
+				_slots[i] = m;
 			break;
 		}
 	}
@@ -96,47 +128,72 @@ void	Character::equip(AMateria* m)
 
 void	Character::unequip(int idx)
 {
-		if(_nIndex[idx] == 1)
-		{
-			_nIndex[idx] = 0;
-		}
+	if(_nIndex[idx] == 1)
+	{
+		_nIndex[idx] = 0;
+	}
 }
 
 void	Character::use(int idx, ICharacter& target)
 {
-	if (idx >= 3 || !this->_nIndex[idx])
+	if (idx > 3 || !this->_slots[idx])
 		return ;
-	_slots[idx].use(target);
+	if (_nIndex[idx] == 0)
+	{
+		std::cout << "* Slot unequipped *" << std::endl;
+		return ;
+	}
+	_slots[idx]->use(target);
 }
 //--------------------------------------------------------------//
 MateriaSource::MateriaSource()
 {
 	for (int i = 0; i < 4; i++)
+	{
 		_nIndex[i] = 0;
+		_slots[i] = NULL;
+	}
 }
 MateriaSource::~MateriaSource()
-{}
+{
+	for (int i = 0; i < 4; i++)
+	{
+		if (_slots[i])
+		{
+			delete _slots[i];
+			_slots[i] = NULL;
+		}
+	}
+}
 MateriaSource::MateriaSource(const MateriaSource& other)
 {
 	MateriaSource::operator=(other);
 }
 MateriaSource & MateriaSource::operator=(const MateriaSource& other)
 {
-	this->_name = other._name;
 	for (int i = 0; i < 4; i++)
-		_nIndex[i] = 0;
+	{
+		if (_slots[i])
+		{
+			delete _slots[i];
+			_slots[i] = NULL;
+		}
+		_nIndex[i] = other._nIndex[i];
+		_slots[i] = other._slots[i]->clone();
+	}
 	return (*this);
 }
 void MateriaSource::learnMateria(AMateria* m)
 {
 	for (int i = 0; i < 4; i++)
+	{
+		if(_nIndex[i] == 0)
 		{
-			if(_nIndex[i] = 0)
-			{
-				_slots[i] = m;
-				break;
-			}
+			_slots[i] = m;
+			_nIndex[i] = 1;
+			break;
 		}
+	}
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type)

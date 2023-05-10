@@ -26,3 +26,8 @@ AMateria::AMateria(const AMateria& other)
 	_type = mat.getType();
 	return (*this);
  }
+
+ /*void	AMateria::use(ICharacter& target)
+{
+	(void) target;
+}*/
