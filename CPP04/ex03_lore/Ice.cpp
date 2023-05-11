@@ -1,7 +1,7 @@
 #include "Ice.hpp"
 #include "Amateria.hpp"
 
-Ice::Ice()
+Ice::Ice(): AMateria("ice")
 {
     std::cout << "Costruisco il Ghiaccio" << std::endl;
 }
@@ -11,7 +11,7 @@ Ice::~Ice()
     std::cout << "Distruggo il Ghiaccio" << std::endl;
 }
 
-Ice::Ice(Ice const & ref)
+Ice::Ice(Ice const & ref): AMateria("ice")
 {
     std::cout << "Copio il Ghiaccio" << std::endl;
     *this = ref;

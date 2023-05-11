@@ -12,7 +12,7 @@ Cat::Cat(Cat & cat)
 {
 	this->type = cat.getType();
 	this->_brain = new Brain(*(cat._brain));
-	std::cout << "COPY CONSTRUCTOR\n";
+	std::cout << "COPY CONSTRUCTOR CAT\n";
 }
 
 Cat::~Cat() 
@@ -29,7 +29,7 @@ void Cat::makeSound() const
 Cat &Cat::operator=(Cat const &cat)
 {
     std::cout << "COPY OVERLOAD" << std::endl;
-    this->type = cat.type;
+    this->type = cat.getType();
     this->_brain = cat._brain;
 	return (*this);
 }

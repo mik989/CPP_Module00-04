@@ -16,12 +16,7 @@ Cat::Cat(Cat &catt)
 Cat::~Cat() 
 {
     std::cout << "Cat destructor called" << std::endl;
-<<<<<<< HEAD
     delete _brain;
-=======
-   delete _brain;
-   // delete this;
->>>>>>> bd37b4ffc079eb9dfc5068110dd7136536c7bfa0
 }
 
 const Cat & Cat::operator=(const Cat &godgatto)
@@ -35,13 +30,6 @@ const Cat & Cat::operator=(const Cat &godgatto)
 void Cat::makeSound() const 
 {
     std::cout << "Meow!" << std::endl;
-}
-
-Cat& Cat::operator=(const Cat &cat)
-{
-    std::cout << "Copy assignment operator called" << std::endl;
-    this->type = cat.getType();
-    return *this;
 }
 
 WrongCat::WrongCat()

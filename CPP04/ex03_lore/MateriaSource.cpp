@@ -2,6 +2,7 @@
 
 MateriaSource::MateriaSource()
 {
+    std::cout << "costruisco la materiasource " <<  std::endl;
     for(int i = 0; i < 4; i++)
         this->_materia[i] = NULL;
 }

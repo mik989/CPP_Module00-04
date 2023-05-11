@@ -10,7 +10,6 @@ Cat::Cat()
 Cat::~Cat() 
 {
     std::cout << "Cat destructor called" << std::endl;
-   // delete this;
 }
 
 void Cat::makeSound() const 
@@ -27,7 +26,6 @@ WrongCat::WrongCat()
 WrongCat::~WrongCat() 
 {
     std::cout << "WrongCat destructor called" << std::endl;
-   // delete this;
 }
 
 void WrongCat::makeSound() const 

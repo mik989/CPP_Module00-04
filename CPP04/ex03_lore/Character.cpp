@@ -2,6 +2,7 @@
 
 Character::Character(std::string name) : _name(name)
 {
+    std::cout << "Costruisco il personaggio: " << this->_name <<  std::endl;
     for(int i = 0; i < 4; i++)
         this->_nslot[i] = 0;
 }
@@ -61,6 +62,8 @@ void Character::equip(AMateria* m)
             break;
         }        
     }
+   // std::cout << "Personaggio equipaggiato con: " << m->getType() <<  std::endl;
+
 }
 
 void Character::unequip(int idx)
@@ -75,5 +78,7 @@ void Character::unequip(int idx)
 void Character::use(int idx, ICharacter& target)
 {
     if(_nslot[idx] == 1)
+    {
         this->_slot[idx]->use(target);
+    }
 }

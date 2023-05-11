@@ -1,19 +1,19 @@
 #include "Cure.hpp"
 #include "Amateria.hpp"
 
-Cure::Cure()
+Cure::Cure(): AMateria("cure")
 {
-    std::cout << "Costruisco il Ghiaccio" << std::endl;
+    std::cout << "Costruisco la cura" << std::endl;
 }
 
 Cure::~Cure()
 {
-    std::cout << "Distruggo il Ghiaccio" << std::endl;
+    std::cout << "Distruggo la cura" << std::endl;
 }
 
-Cure::Cure(Cure const & ref)
+Cure::Cure(Cure const & ref) : AMateria("cure")
 {
-    std::cout << "Copio il Ghiaccio" << std::endl;
+    std::cout << "Copio la cura" << std::endl;
     *this = ref;
 }
 

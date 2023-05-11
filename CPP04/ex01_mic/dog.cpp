@@ -12,7 +12,7 @@ Dog::Dog(Dog & dog)
 {
 	this->type = dog.getType();
 	this->_brain = new Brain(*(dog._brain));
-	std::cout << "COPY CONSTRUCTOR\n";
+	std::cout << "COPY CONSTRUCTOR DOG\n";
 }
 
 Dog::~Dog() 
